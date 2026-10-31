@@ -1,0 +1,13 @@
+project_id = "YOUR_SUPABASE_PROJECT_REF"
+
+[functions.username-login]
+verify_jwt = false
+
+[functions.username-password-reset]
+verify_jwt = false
+
+[functions.create-qris-payment]
+verify_jwt = true
+
+[functions.midtrans-webhook]
+verify_jwt = false
