@@ -7,17 +7,21 @@
   async function syncCatalog() {
     if (!window.rdBackendReady || !window.RD_PRODUCTS || !client()) return false;
 
-    const baseSelect = "id,brand,title,group_name,category,tag,short_description,description,info,sort_order,product_variants(id,name,price,original_price,discount_enabled,stock_status,note,sort_order)";
+    const baseSelect = "id,brand,title,group_name,category,tag,short_description,description,info,sort_order,product_variants(id,name,price,original_price,discount_enabled,stock_status,note,sort_order,is_active)";
     let result = await client().from("products")
-      .select("id,brand,title,group_name,category,tag,short_description,description,info,image_url,sort_order,product_variants(id,name,price,original_price,discount_enabled,stock_status,note,sort_order)")
-      .eq("is_active", true).order("sort_order", { ascending: true })
+      .select("id,brand,title,group_name,category,tag,short_description,description,info,image_url,sort_order,product_variants(id,name,price,original_price,discount_enabled,stock_status,note,sort_order,is_active)")
+      .eq("is_active", true)
+      .eq("product_variants.is_active", true)
+      .order("sort_order", { ascending: true })
       .order("sort_order", { ascending: true, foreignTable: "product_variants" });
 
     // Existing deployments can continue to display the embedded logos until the image migration is run.
     if (result.error && /image_url|column/i.test(result.error.message || "")) {
       result = await client().from("products")
         .select(baseSelect)
-        .eq("is_active", true).order("sort_order", { ascending: true })
+        .eq("is_active", true)
+        .eq("product_variants.is_active", true)
+        .order("sort_order", { ascending: true })
         .order("sort_order", { ascending: true, foreignTable: "product_variants" });
     }
     const { data, error } = result;
@@ -54,6 +58,54 @@
     console.info(`RUANGDIGITAL190: ${mapped.length} produk berhasil disinkronkan dari database.`);
     return true;
   }
+
+
+  // Live catalog: edits made in the admin dashboard refresh visitors' open pages.
+  let catalogChannel = null;
+  let catalogRefreshTimer = null;
+  let catalogSyncRunning = false;
+  let catalogSyncQueued = false;
+
+  function scheduleCatalogRefresh() {
+    if (catalogRefreshTimer) window.clearTimeout(catalogRefreshTimer);
+    catalogRefreshTimer = window.setTimeout(async () => {
+      catalogRefreshTimer = null;
+      if (catalogSyncRunning) {
+        catalogSyncQueued = true;
+        return;
+      }
+      catalogSyncRunning = true;
+      try {
+        await syncCatalog();
+      } catch (error) {
+        console.warn("RUANGDIGITAL190 live catalog refresh failed:", error);
+      } finally {
+        catalogSyncRunning = false;
+        if (catalogSyncQueued) {
+          catalogSyncQueued = false;
+          scheduleCatalogRefresh();
+        }
+      }
+    }, 280);
+  }
+
+  function subscribeCatalogChanges() {
+    if (!window.rdBackendReady || !client() || catalogChannel) return false;
+    catalogChannel = client().channel("rd190-public-catalog-live")
+      .on("postgres_changes", { event: "*", schema: "public", table: "products" }, scheduleCatalogRefresh)
+      .on("postgres_changes", { event: "*", schema: "public", table: "product_variants" }, scheduleCatalogRefresh)
+      .subscribe(status => {
+        if (status === "SUBSCRIBED") console.info("RUANGDIGITAL190: live catalog subscription active.");
+        else if (status === "CHANNEL_ERROR" || status === "TIMED_OUT") {
+          console.warn("RUANGDIGITAL190: live catalog subscription status:", status);
+        }
+      });
+    return true;
+  }
+
+  window.addEventListener("beforeunload", () => {
+    if (catalogChannel && client()) client().removeChannel(catalogChannel);
+  });
 
   async function createOrder({ name, phone, email, note, items }) {
     if (!window.rdBackendReady) throw new Error("Backend belum aktif.");
@@ -134,7 +186,11 @@
 
   window.RDStoreBackend = {
     get ready() { return Boolean(window.rdBackendReady); },
-    syncCatalog, createOrder, loadOrders, createQrisPayment, submitSupport
+    syncCatalog, subscribeCatalogChanges, createOrder, loadOrders, createQrisPayment, submitSupport
   };
-  if (window.rdBackendReady) syncCatalog().catch(error => console.warn(error));
+  if (window.rdBackendReady) {
+    syncCatalog()
+      .catch(error => console.warn("Initial catalog sync failed:", error))
+      .finally(() => subscribeCatalogChanges());
+  }
 })();
