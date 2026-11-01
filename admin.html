@@ -1,126 +1,366 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080b18"><meta name="robots" content="noindex,nofollow">
-  <title>Admin Dashboard — RUANGDIGITAL190</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#09111f">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Dashboard administrator RUANGDIGITAL190.">
+  <title>Admin Control Center — RUANGDIGITAL190</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#080b18;--panel:#12172b;--panel2:#171e37;--ink:#f5f7ff;--muted:#a5aec7;--cyan:#52e4df;--purple:#8b72ff;--gold:#ffd17a;--red:#ff778d;--green:#51dfa0;--line:rgba(211,220,255,.12)}
-    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0,rgba(116,83,255,.17),transparent 35rem),linear-gradient(180deg,#080b18,#0b1020);color:var(--ink);font-family:"DM Sans",Arial,sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}a{color:inherit;text-decoration:none}.hidden{display:none!important}.shell{width:min(1440px,calc(100% - 36px));margin:auto}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px}.brand img{width:62px;height:42px;object-fit:contain;border-radius:10px;background:#11182d;padding:3px}.brand strong{font:700 14px "Space Grotesk";letter-spacing:.7px}.brand small{display:block;color:#8290ad;font-size:9px;letter-spacing:2px;margin-top:4px}.top-actions{display:flex;align-items:center;gap:10px}.pill{padding:7px 10px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:10px}.btn{border:1px solid transparent;border-radius:11px;padding:10px 14px;background:linear-gradient(100deg,var(--cyan),#8ba4ff);color:#07101b;font-size:11px;font-weight:800;cursor:pointer}.btn.ghost{border-color:var(--line);background:rgba(255,255,255,.04);color:var(--ink)}.btn.danger{background:rgba(255,119,141,.12);border-color:rgba(255,119,141,.25);color:#ffc3ce}.btn:disabled{opacity:.5;cursor:not-allowed}.login-wrap{min-height:calc(100vh - 76px);display:grid;place-items:center;padding:30px 0}.login-card{width:min(460px,100%);padding:28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(150deg,rgba(21,28,53,.97),rgba(12,17,34,.98));box-shadow:0 30px 80px #0007}.eyebrow{color:var(--cyan);font-size:9px;font-weight:800;letter-spacing:2px}.login-card h1{font:700 28px "Space Grotesk";margin:9px 0}.muted{color:var(--muted);font-size:11px;line-height:1.7}.field{display:block;margin:14px 0;color:#b8c2d8;font-size:10px;font-weight:800}.field input,.field select,.field textarea{display:block;width:100%;margin-top:6px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#0b1020;color:#fff;outline:none;font-size:12px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--cyan)}.alert{margin:12px 0;padding:11px 13px;border:1px solid rgba(82,228,223,.2);border-radius:11px;background:rgba(82,228,223,.06);color:#cffffc;font-size:10px;line-height:1.7}.alert.error{border-color:rgba(255,119,141,.3);background:rgba(255,119,141,.07);color:#ffd4dc}.login-card .btn{width:100%;margin-top:7px}.small-link{display:block;margin-top:16px;text-align:center;color:var(--cyan);font-size:10px}.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:20px;padding:24px 0 50px}.sidebar{position:sticky;top:16px;align-self:start;padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(18,23,43,.88)}.side-title{padding:9px 10px 13px;color:#74819f;font-size:9px;font-weight:800;letter-spacing:1.8px}.side-btn{width:100%;display:flex;align-items:center;gap:10px;padding:11px 12px;margin:3px 0;border:1px solid transparent;border-radius:11px;background:transparent;color:#b6c0d5;text-align:left;font-size:11px;font-weight:700;cursor:pointer}.side-btn.active,.side-btn:hover{background:rgba(82,228,223,.08);border-color:rgba(82,228,223,.16);color:var(--cyan)}.side-btn span:first-child{width:20px;text-align:center}.main{min-width:0}.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:4px 0 20px}.page-head h1{font:700 clamp(24px,3vw,34px) "Space Grotesk";margin:5px 0}.page-head p{margin:0;color:var(--muted);font-size:11px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}.stat{padding:17px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,rgba(21,28,52,.95),rgba(12,17,34,.95))}.stat small{color:#8e9bb8;font-size:9px;font-weight:800;letter-spacing:1px}.stat strong{display:block;margin-top:8px;font:700 26px "Space Grotesk"}.stat em{display:block;margin-top:3px;color:#8b98b4;font-size:9px;font-style:normal}.panel{padding:18px;border:1px solid var(--line);border-radius:17px;background:rgba(18,23,43,.85);margin-bottom:16px;min-width:0}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}.panel-head h2{margin:0;font:700 15px "Space Grotesk"}.panel-head p{margin:4px 0 0;color:var(--muted);font-size:10px}.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.search{min-width:190px;max-width:300px;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#0b1020;color:#fff;font-size:11px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:680px}th,td{padding:11px 12px;border-bottom:1px solid rgba(211,220,255,.08);text-align:left;font-size:10px;vertical-align:middle}th{background:rgba(255,255,255,.035);color:#8d9ab7;font-size:9px;letter-spacing:.7px;text-transform:uppercase;white-space:nowrap}td{color:#dce3f3}tr:last-child td{border-bottom:0}.sub{display:block;margin-top:3px;color:#8491ad;font-size:9px}.status{display:inline-flex;padding:5px 8px;border-radius:99px;background:rgba(255,209,122,.09);color:var(--gold);font-size:9px;font-weight:800}.status.good{background:rgba(81,223,160,.09);color:var(--green)}.status.bad{background:rgba(255,119,141,.09);color:#ff9aac}.table-select{max-width:150px;padding:7px;border:1px solid var(--line);border-radius:8px;background:#0b1020;color:#fff;font-size:9px}.mini-btn{padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.04);color:#e6edff;font-size:9px;font-weight:800;cursor:pointer}.mini-btn:hover{border-color:var(--cyan);color:var(--cyan)}.tab{display:none}.tab.active{display:block}.empty{padding:30px;text-align:center;color:var(--muted);font-size:11px}.product-block{padding:12px 0;border-bottom:1px solid var(--line)}.product-block:last-child{border-bottom:0}.product-line{display:flex;align-items:center;justify-content:space-between;gap:12px}.product-line strong{font-size:11px}.variant-list{display:grid;gap:7px;margin-top:9px}.variant-line{display:grid;grid-template-columns:minmax(150px,1fr) 110px 130px auto;align-items:center;gap:8px;padding:8px 10px;border:1px solid rgba(211,220,255,.08);border-radius:10px;background:rgba(255,255,255,.02)}.variant-line span{font-size:9px;color:#b8c3d9}.variant-line small{color:var(--muted);font-size:9px}.modal{position:fixed;inset:0;z-index:10;display:none;place-items:center;padding:18px;background:#02050ecc;backdrop-filter:blur(8px)}.modal.show{display:grid}.modal-card{width:min(540px,100%);max-height:90vh;overflow:auto;padding:20px;border:1px solid var(--line);border-radius:18px;background:#12182d}.modal-card h2{font:700 18px "Space Grotesk";margin:0 0 14px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:30;max-width:calc(100% - 30px);padding:11px 15px;border:1px solid rgba(82,228,223,.25);border-radius:10px;background:#17213b;color:#effcff;font-size:10px;box-shadow:0 12px 35px #0007}.footer{padding:18px 0 28px;color:#6f7d9a;font-size:9px;border-top:1px solid var(--line)}
-    @media(max-width:980px){.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow:auto;gap:4px}.side-title{display:none}.side-btn{width:auto;white-space:nowrap}.stats{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:600px){.shell{width:calc(100% - 22px)}.topbar{height:65px}.brand img{width:48px;height:35px}.brand strong{font-size:11px}.pill{display:none}.login-card{padding:21px}.stats{gap:8px}.stat{padding:13px}.stat strong{font-size:21px}.panel{padding:12px}.page-head{align-items:flex-start;flex-direction:column}.variant-line{grid-template-columns:1fr 1fr}.variant-line .mini-btn{grid-column:1/-1}.form-row{grid-template-columns:1fr}}
+    :root{
+      color-scheme:dark;
+      --bg:#080e1b;--surface:#101a2b;--surface-2:#142238;--surface-3:#1a2a42;
+      --ink:#f3f7ff;--muted:#94a6c1;--soft:#bdc9dc;--line:rgba(185,207,239,.12);
+      --cyan:#61e7df;--blue:#8bb8ff;--violet:#a58bff;--green:#69dfa8;--gold:#ffd27b;--red:#ff8295;
+      --radius:18px;--shadow:0 24px 70px rgba(0,0,0,.28);--gutter:clamp(12px,2.2vw,28px);
+    }
+    *{box-sizing:border-box}
+    html{min-width:320px;scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 8% -10%,rgba(91,104,255,.18),transparent 36rem),radial-gradient(ellipse at 100% 5%,rgba(62,210,205,.09),transparent 32rem),var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif}
+    button,input,select,textarea{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer}
+    img{max-width:100%}
+    .hidden{display:none!important}
+    .shell{width:min(1560px,calc(100% - var(--gutter)*2));margin-inline:auto}
+    .topbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand-mark{width:54px;height:46px;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#101a2b}
+    .brand-mark img{width:100%;height:100%;object-fit:contain;padding:4px}
+    .brand-copy{min-width:0}
+    .brand-copy strong{display:block;font:700 14px "Space Grotesk",sans-serif;letter-spacing:.6px}
+    .brand-copy small{display:block;margin-top:4px;color:#8296b4;font-size:9px;letter-spacing:2px}
+    .top-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}
+    .connection,.identity{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:var(--soft);font-size:10px}
+    .connection:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(255,210,123,.1)}
+    .connection.ready:before{background:var(--green);box-shadow:0 0 0 4px rgba(105,223,168,.1)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:10px 14px;border:1px solid transparent;border-radius:12px;background:linear-gradient(110deg,var(--cyan),#9bb7ff);color:#071321;font-size:11px;font-weight:800;transition:transform .18s ease,filter .18s ease}
+    .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+    .btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+    .btn.ghost{border-color:var(--line);background:rgba(255,255,255,.035);color:var(--ink)}
+    .btn.danger{border-color:rgba(255,130,149,.28);background:rgba(255,130,149,.1);color:#ffc3cc}
+    .btn.small{min-height:34px;padding:8px 11px;font-size:10px}
+    .login-wrap{min-height:calc(100dvh - 76px);display:grid;place-items:center;padding:34px 0}
+    .login-card{width:min(470px,100%);padding:clamp(22px,4vw,34px);border:1px solid var(--line);border-radius:26px;background:linear-gradient(150deg,rgba(20,34,55,.97),rgba(12,20,35,.98));box-shadow:var(--shadow)}
+    .login-emblem{width:74px;height:64px;display:grid;place-items:center;margin-bottom:22px;border:1px solid rgba(97,231,223,.2);border-radius:18px;background:linear-gradient(145deg,rgba(97,231,223,.12),rgba(165,139,255,.12))}
+    .login-emblem img{width:100%;height:100%;object-fit:contain;padding:7px}
+    .eyebrow{color:var(--cyan);font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+    h1,h2,h3,p{overflow-wrap:anywhere}
+    .login-card h1{margin:8px 0 7px;font:700 clamp(25px,5vw,32px) "Space Grotesk",sans-serif}
+    .muted{color:var(--muted);font-size:11px;line-height:1.75}
+    .field{display:block;min-width:0;margin:14px 0;color:#c3cee0;font-size:10px;font-weight:800}
+    .field input,.field select,.field textarea{display:block;width:100%;min-width:0;margin-top:7px;padding:12px 13px;border:1px solid var(--line);border-radius:11px;outline:none;background:#0a1423;color:var(--ink);font-size:12px;transition:border-color .15s,box-shadow .15s}
+    .field input:focus,.field select:focus,.field textarea:focus,.search:focus{border-color:rgba(97,231,223,.65);box-shadow:0 0 0 3px rgba(97,231,223,.09)}
+    .field textarea{resize:vertical;min-height:88px}
+    .field small{display:block;margin-top:5px;color:#7f93b0;font-size:9px;font-weight:500;line-height:1.6}
+    .remember-row{display:flex;align-items:center;gap:9px;margin:14px 0;color:var(--muted);font-size:10px}
+    .remember-row input{accent-color:var(--cyan)}
+    .alert{margin:13px 0;padding:12px 13px;border:1px solid rgba(97,231,223,.18);border-radius:12px;background:rgba(97,231,223,.055);color:#d6fffc;font-size:10px;line-height:1.7;overflow-wrap:anywhere}
+    .alert.error{border-color:rgba(255,130,149,.25);background:rgba(255,130,149,.07);color:#ffd4db}
+    .login-card .btn{width:100%;margin-top:7px}
+    .login-foot{margin-top:18px;text-align:center;color:#8294af;font-size:9px;line-height:1.7}
+    .dashboard{padding:24px 0 50px}
+    .layout{display:grid;grid-template-columns:238px minmax(0,1fr);gap:20px;align-items:start}
+    .sidebar{position:sticky;top:16px;padding:13px;border:1px solid var(--line);border-radius:20px;background:rgba(15,25,42,.88);backdrop-filter:blur(14px)}
+    .side-title{padding:10px 11px 13px;color:#7186a5;font-size:9px;font-weight:800;letter-spacing:1.8px}
+    .side-btn{width:100%;display:flex;align-items:center;gap:11px;margin:3px 0;padding:12px;border:1px solid transparent;border-radius:12px;background:transparent;color:#b7c5d9;text-align:left;font-size:11px;font-weight:700;transition:background .15s,border-color .15s,color .15s}
+    .side-btn:hover,.side-btn.active{border-color:rgba(97,231,223,.15);background:rgba(97,231,223,.075);color:var(--cyan)}
+    .side-icon{width:22px;flex:0 0 22px;text-align:center;font-size:15px}
+    .main{min-width:0}
+    .page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:3px 0 19px}
+    .page-head h1{margin:5px 0 4px;font:700 clamp(24px,3vw,34px) "Space Grotesk",sans-serif}
+    .page-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+    .stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px;margin-bottom:17px}
+    .stat{position:relative;overflow:hidden;min-width:0;padding:16px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(22,36,58,.96),rgba(13,23,40,.96))}
+    .stat:after{content:"";position:absolute;right:-22px;top:-30px;width:88px;height:88px;border-radius:50%;background:rgba(97,231,223,.055)}
+    .stat small{position:relative;z-index:1;color:#8ea2bf;font-size:9px;font-weight:800;letter-spacing:.8px}
+    .stat strong{position:relative;z-index:1;display:block;margin-top:8px;font:700 clamp(20px,2.2vw,27px) "Space Grotesk",sans-serif;overflow-wrap:anywhere}
+    .stat em{position:relative;z-index:1;display:block;margin-top:4px;color:#8195b2;font-size:9px;font-style:normal;line-height:1.5}
+    .panel{min-width:0;margin-bottom:15px;padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(15,25,42,.88)}
+    .panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .panel-head h2{margin:0;font:700 15px "Space Grotesk",sans-serif}
+    .panel-head p{margin:4px 0 0;color:var(--muted);font-size:10px;line-height:1.6}
+    .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .search{width:min(300px,100%);min-width:160px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;outline:none;background:#0a1423;color:var(--ink);font-size:11px}
+    .table-wrap{max-width:100%;overflow:auto;border:1px solid var(--line);border-radius:13px}
+    table{width:100%;border-collapse:collapse;min-width:680px}
+    th,td{padding:11px 12px;border-bottom:1px solid rgba(185,207,239,.075);text-align:left;vertical-align:middle;font-size:10px}
+    th{position:sticky;top:0;background:#142238;color:#8ea2bf;font-size:9px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;white-space:nowrap}
+    td{color:#dce6f5;line-height:1.55}
+    tr:last-child td{border-bottom:0}
+    .sub{display:block;margin-top:3px;color:#8195b2;font-size:9px;overflow-wrap:anywhere}
+    .status{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;background:rgba(255,210,123,.09);color:var(--gold);font-size:9px;font-weight:800;white-space:nowrap}
+    .status.good{background:rgba(105,223,168,.1);color:var(--green)}
+    .status.bad{background:rgba(255,130,149,.1);color:#ff9dad}
+    .status.neutral{background:rgba(139,184,255,.1);color:var(--blue)}
+    .table-select{max-width:160px;padding:8px;border:1px solid var(--line);border-radius:9px;background:#0a1423;color:var(--ink);font-size:9px}
+    .mini-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:31px;padding:7px 9px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.035);color:#e5edfb;font-size:9px;font-weight:800;white-space:nowrap}
+    .mini-btn:hover{border-color:rgba(97,231,223,.5);color:var(--cyan)}
+    .mini-btn.danger{border-color:rgba(255,130,149,.22);color:#ffb6c0}
+    .tab{display:none;min-width:0}
+    .tab.active{display:block;animation:fadeIn .2s ease}
+    @keyframes fadeIn{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .empty{padding:28px 18px;text-align:center;color:var(--muted);font-size:11px;line-height:1.7}
+    .product-block{padding:14px 0;border-bottom:1px solid var(--line)}
+    .product-block:last-child{border-bottom:0}
+    .product-line{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px}
+    .product-thumb{width:56px;height:56px;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line);border-radius:13px;background:#0a1423;color:var(--cyan);font:700 16px "Space Grotesk",sans-serif}
+    .product-thumb img{width:100%;height:100%;object-fit:contain;padding:5px}
+    .product-meta{min-width:0}
+    .product-meta strong{display:block;font-size:12px}
+    .product-meta small{display:block;margin-top:4px;color:var(--muted);font-size:9px;line-height:1.5}
+    .variant-list{display:grid;gap:7px;margin:12px 0 0 68px}
+    .variant-line{display:grid;grid-template-columns:minmax(150px,1fr) minmax(90px,auto) minmax(110px,auto) auto;align-items:center;gap:9px;padding:9px 10px;border:1px solid rgba(185,207,239,.09);border-radius:11px;background:rgba(255,255,255,.018)}
+    .variant-line strong{display:block;color:#dce6f5;font-size:10px}
+    .variant-line small{display:block;margin-top:3px;color:var(--muted);font-size:9px;line-height:1.4}
+    .modal{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:16px;background:rgba(2,7,15,.82);backdrop-filter:blur(9px)}
+    .modal.show{display:grid}
+    .modal-card{width:min(700px,100%);max-height:min(92dvh,900px);overflow:auto;padding:clamp(17px,3vw,24px);border:1px solid var(--line);border-radius:20px;background:#111d30;box-shadow:var(--shadow)}
+    .modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+    .modal-head h2{margin:0;font:700 19px "Space Grotesk",sans-serif}
+    .modal-head p{margin:5px 0 0;color:var(--muted);font-size:10px;line-height:1.6}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}
+    .field.full{grid-column:1/-1}
+    .image-editor{display:grid;grid-template-columns:100px minmax(0,1fr);gap:13px;align-items:center}
+    .image-preview{width:100px;height:100px;display:grid;place-items:center;overflow:hidden;border:1px dashed rgba(139,184,255,.35);border-radius:15px;background:#0a1423;color:#8297b5;font-size:10px;text-align:center}
+    .image-preview img{width:100%;height:100%;object-fit:contain;padding:6px}
+    .modal-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:17px;padding-top:14px;border-top:1px solid var(--line)}
+    .toast{position:fixed;left:50%;bottom:18px;z-index:80;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);padding:12px 16px;border:1px solid rgba(97,231,223,.25);border-radius:12px;background:#172740;color:#f0fbff;font-size:10px;line-height:1.5;box-shadow:var(--shadow)}
+    .footer{padding:18px 0 28px;border-top:1px solid var(--line);color:#7185a3;font-size:9px;line-height:1.7}
+    @media(max-width:1180px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:210px minmax(0,1fr)}}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;gap:5px;overflow-x:auto;scrollbar-width:thin;padding:9px}.side-title{display:none}.side-btn{width:auto;flex:0 0 auto;margin:0;white-space:nowrap}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:620px){
+      .topbar{min-height:66px;align-items:center}.brand-mark{width:44px;height:40px}.brand-copy strong{font-size:11px}.brand-copy small{font-size:8px;letter-spacing:1.3px}.top-actions{gap:6px}.connection,.identity{display:none}.top-actions .btn{min-height:35px;padding:8px 10px;font-size:9px}
+      .login-wrap{min-height:calc(100dvh - 66px);padding:20px 0}.login-card{border-radius:20px}
+      .dashboard{padding-top:14px}.sidebar{border-radius:14px}.side-btn{padding:10px;font-size:10px}.side-icon{width:18px;flex-basis:18px}
+      .page-head{align-items:flex-start;flex-direction:column}.page-head .btn{width:100%}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stat{padding:13px}.stat small{font-size:8px}.stat em{font-size:8px}
+      .panel{padding:13px;border-radius:15px}.panel-head{align-items:flex-start;flex-direction:column}.panel-head .toolbar{width:100%}.search{width:100%;max-width:none}
+      .product-line{grid-template-columns:46px minmax(0,1fr)}.product-thumb{width:46px;height:46px}.product-line .toolbar{grid-column:1/-1}.variant-list{margin-left:0}.variant-line{grid-template-columns:minmax(0,1fr) auto}.variant-line .mini-btn{grid-column:1/-1}
+      .form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.image-editor{grid-template-columns:82px minmax(0,1fr)}.image-preview{width:82px;height:82px}.modal{padding:8px}.modal-card{max-height:94dvh;border-radius:16px}.modal-actions .btn{flex:1}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
-  <header class="topbar shell"><a class="brand" href="./index.html"><img src="./assets/brand/ruangdigital-logo.jpg" alt="RUANGDIGITAL190"><span><strong>RUANGDIGITAL190</strong><small>ADMIN CONTROL CENTER</small></span></a><div class="top-actions"><span class="pill" id="adminIdentity">Belum login</span><a class="btn ghost" href="./index.html">Lihat toko ↗</a><button class="btn ghost hidden" id="adminLogout" type="button">Keluar</button></div></header>
+  <header class="topbar shell">
+    <a class="brand" href="./index.html" aria-label="Kembali ke RUANGDIGITAL190">
+      <span class="brand-mark"><img src="./assets/brand/ruangdigital-logo.jpg" alt="Logo RUANGDIGITAL190"></span>
+      <span class="brand-copy"><strong>RUANGDIGITAL190</strong><small>ADMIN CONTROL CENTER</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="connection" id="connectionStatus">Memeriksa koneksi</span>
+      <span class="identity" id="adminIdentity">Belum login</span>
+      <a class="btn ghost" href="./index.html">Lihat toko ↗</a>
+      <button class="btn ghost hidden" id="adminLogout" type="button">Keluar</button>
+    </div>
+  </header>
 
   <main id="loginView" class="login-wrap shell">
-    <section class="login-card"><div class="eyebrow">ADMIN AUTHENTICATION</div><h1>Dashboard Admin</h1><p class="muted">Masuk menggunakan username dan password akun yang telah diberi role administrator di database. Pendaftaran pelanggan biasa tidak otomatis menjadi admin.</p>
+    <section class="login-card">
+      <div class="login-emblem"><img src="./assets/brand/ruangdigital-logo.jpg" alt=""></div>
+      <div class="eyebrow">Secure administrator access</div>
+      <h1>Selamat datang kembali.</h1>
+      <p class="muted">Masuk ke pusat kendali RUANGDIGITAL190 untuk mengelola katalog, pesanan, pelanggan, dan aktivitas toko.</p>
       <div class="alert" id="backendNotice">Memeriksa koneksi database…</div>
-      <form id="adminLoginForm"><label class="field">Username<input id="adminUsername" required autocomplete="username" placeholder="username admin" value="udin123"></label><label class="field">Password<input id="adminPassword" type="password" required autocomplete="current-password" placeholder="Password"></label><label class="remember-row" style="display:flex;gap:8px;align-items:center;color:var(--muted);font-size:10px"><input id="adminRemember" type="checkbox" checked> Ingat saya di perangkat ini</label><button class="btn" id="adminLoginSubmit" type="submit">Masuk ke dashboard</button></form>
-      <div class="alert error hidden" id="loginError"></div><a class="small-link" href="./index.html">← Kembali ke RUANGDIGITAL190</a>
+      <form id="adminLoginForm" autocomplete="on">
+        <label class="field">Username
+          <input id="adminUsername" required autocomplete="username" value="udin123" placeholder="Username administrator">
+        </label>
+        <label class="field">Password
+          <input id="adminPassword" type="password" required autocomplete="current-password" placeholder="Masukkan password">
+        </label>
+        <label class="remember-row"><input id="adminRemember" type="checkbox" checked> Ingat sesi di perangkat ini</label>
+        <button class="btn" id="adminLoginSubmit" type="submit">Masuk ke dashboard <span aria-hidden="true">→</span></button>
+      </form>
+      <div class="alert error hidden" id="loginError" role="alert"></div>
+      <p class="login-foot">Akses hanya diberikan kepada akun dengan role <strong>admin</strong> di Supabase. Password tidak disimpan di halaman ini.</p>
     </section>
   </main>
 
-  <main id="dashboardView" class="shell hidden">
+  <main id="dashboardView" class="dashboard shell hidden">
     <div class="layout">
-      <aside class="sidebar"><div class="side-title">MENU ADMIN</div><button class="side-btn active" data-admin-tab="overview"><span>▦</span>Ringkasan</button><button class="side-btn" data-admin-tab="users"><span>♙</span>Pengguna</button><button class="side-btn" data-admin-tab="orders"><span>▤</span>Pesanan</button><button class="side-btn" data-admin-tab="products"><span>▣</span>Produk & harga</button><button class="side-btn" data-admin-tab="support"><span>✉</span>Refund & garansi</button><button class="side-btn" data-admin-tab="audit"><span>◷</span>Aktivitas</button></aside>
+      <aside class="sidebar" aria-label="Navigasi dashboard">
+        <div class="side-title">WORKSPACE</div>
+        <button class="side-btn active" type="button" data-admin-tab="overview"><span class="side-icon">▦</span>Ringkasan</button>
+        <button class="side-btn" type="button" data-admin-tab="users"><span class="side-icon">♙</span>Pengguna</button>
+        <button class="side-btn" type="button" data-admin-tab="devices"><span class="side-icon">▣</span>Perangkat login</button>
+        <button class="side-btn" type="button" data-admin-tab="orders"><span class="side-icon">▤</span>Pesanan</button>
+        <button class="side-btn" type="button" data-admin-tab="products"><span class="side-icon">◇</span>Katalog produk</button>
+        <button class="side-btn" type="button" data-admin-tab="support"><span class="side-icon">✉</span>Refund & garansi</button>
+        <button class="side-btn" type="button" data-admin-tab="audit"><span class="side-icon">◷</span>Log aktivitas</button>
+      </aside>
+
       <section class="main">
-        <div class="tab active" id="tab-overview"><div class="page-head"><div><div class="eyebrow">OVERVIEW</div><h1>Ringkasan toko</h1><p>Data yang tampil berasal dari database Supabase.</p></div><button class="btn" id="refreshAll">↻ Perbarui data</button></div>
-          <div class="stats"><article class="stat"><small>PENGGUNA TERDAFTAR</small><strong id="statUsers">—</strong><em>Total akun pelanggan dan admin</em></article><article class="stat"><small>TOTAL PESANAN</small><strong id="statOrders">—</strong><em>Pesanan tersimpan online</em></article><article class="stat"><small>MENUNGGU PROSES</small><strong id="statPending">—</strong><em>Perlu tindak lanjut admin</em></article><article class="stat"><small>PENJUALAN TERVERIFIKASI</small><strong id="statSales">—</strong><em>Hanya pembayaran terverifikasi</em></article></div>
-          <div class="panel"><div class="panel-head"><div><h2>Pesanan terbaru</h2><p>Periksa status pemesanan dan tindak lanjut pelanggan.</p></div><button class="mini-btn" data-admin-tab="orders">Semua pesanan</button></div><div id="recentOrders" class="empty">Memuat data…</div></div>
-        </div>
-        <div class="tab" id="tab-users"><div class="page-head"><div><div class="eyebrow">CUSTOMER DATABASE</div><h1>Pengguna terdaftar</h1><p>Daftar akun yang berhasil dibuat melalui website.</p></div><button class="btn" id="exportUsers">Ekspor CSV</button></div><div class="panel"><div class="panel-head"><div><h2>Database pengguna</h2><p id="userCountText">— pengguna</p></div><input class="search" id="userSearch" placeholder="Cari username, nama, email…"></div><div id="usersTable" class="empty">Memuat pengguna…</div></div></div>
-        <div class="tab" id="tab-orders"><div class="page-head"><div><div class="eyebrow">ORDER MANAGEMENT</div><h1>Manajemen pesanan</h1><p>Perbarui status pemenuhan pesanan. Status pembayaran berubah melalui webhook payment gateway.</p></div></div><div class="panel"><div class="panel-head"><div><h2>Semua pesanan</h2><p>Data pelanggan hanya dapat dibaca oleh admin dan pemilik pesanan.</p></div><input class="search" id="orderSearch" placeholder="Cari nomor invoice / pelanggan…"></div><div id="ordersTable" class="empty">Memuat pesanan…</div></div></div>
-        <div class="tab" id="tab-products"><div class="page-head"><div><div class="eyebrow">CATALOG MANAGEMENT</div><h1>Produk, harga & stok</h1><p>Perubahan di sini akan tersinkron ke katalog pelanggan setelah halaman dimuat ulang.</p></div></div><div class="panel"><div class="panel-head"><div><h2>Katalog database</h2><p>Ubah harga, status stok, dan informasi produk tanpa mengedit HTML.</p></div><input class="search" id="productSearch" placeholder="Cari produk…"></div><div id="productsList" class="empty">Memuat produk…</div></div></div>
-        <div class="tab" id="tab-support"><div class="page-head"><div><div class="eyebrow">CUSTOMER CARE</div><h1>Refund & garansi</h1><p>Periksa tiket yang dikirim oleh pelanggan yang login.</p></div></div><div class="panel"><div class="panel-head"><div><h2>Pengajuan refund</h2></div></div><div id="refundTable" class="empty">Memuat pengajuan…</div></div><div class="panel"><div class="panel-head"><div><h2>Klaim garansi</h2></div></div><div id="warrantyTable" class="empty">Memuat klaim…</div></div></div>
-        <div class="tab" id="tab-audit"><div class="page-head"><div><div class="eyebrow">SECURITY LOG</div><h1>Aktivitas admin</h1><p>Jejak perubahan pada data produk dan status pesanan.</p></div></div><div class="panel"><div id="auditTable" class="empty">Memuat aktivitas…</div></div></div>
+        <section class="tab active" id="tab-overview">
+          <div class="page-head">
+            <div><div class="eyebrow">STORE OVERVIEW</div><h1>Ringkasan toko</h1><p>Pantau performa operasional dan aktivitas RUANGDIGITAL190.</p></div>
+            <button class="btn" id="refreshAll" type="button">↻ Perbarui data</button>
+          </div>
+          <div class="stats">
+            <article class="stat"><small>PENGGUNA TERDAFTAR</small><strong id="statUsers">—</strong><em>Total akun pelanggan dan admin</em></article>
+            <article class="stat"><small>TOTAL PESANAN</small><strong id="statOrders">—</strong><em>Pesanan online tersimpan</em></article>
+            <article class="stat"><small>PERLU DIPROSES</small><strong id="statPending">—</strong><em>Pesanan belum selesai</em></article>
+            <article class="stat"><small>PENJUALAN TERVERIFIKASI</small><strong id="statSales">—</strong><em>Pembayaran yang sudah diverifikasi</em></article>
+            <article class="stat"><small>PERANGKAT AKTIF</small><strong id="statDevices">—</strong><em>Browser aktif dalam 3 menit terakhir</em></article>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h2>Pesanan terbaru</h2><p>Daftar pesanan online yang membutuhkan pemantauan.</p></div><button class="mini-btn" type="button" data-admin-tab="orders">Lihat semua pesanan →</button></div>
+            <div id="recentOrders" class="empty">Memuat data…</div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h2>Perangkat yang sedang aktif</h2><p>Perkiraan sesi berdasarkan heartbeat browser.</p></div><button class="mini-btn" type="button" data-admin-tab="devices">Pantau perangkat →</button></div>
+            <div id="recentDevices" class="empty">Memuat perangkat…</div>
+          </div>
+        </section>
+
+        <section class="tab" id="tab-users">
+          <div class="page-head"><div><div class="eyebrow">CUSTOMER DATABASE</div><h1>Data pengguna</h1><p>Informasi akun yang terdaftar di website.</p></div><button class="btn" id="exportUsers" type="button">↓ Ekspor CSV</button></div>
+          <div class="panel">
+            <div class="panel-head"><div><h2>Daftar pengguna</h2><p id="userCountText">Memuat data pengguna…</p></div><input class="search" id="userSearch" type="search" placeholder="Cari username, nama, email…" aria-label="Cari pengguna"></div>
+            <div id="usersTable" class="empty">Memuat pengguna…</div>
+          </div>
+        </section>
+
+        <section class="tab" id="tab-devices">
+          <div class="page-head"><div><div class="eyebrow">SESSION MONITOR</div><h1>Perangkat login</h1><p>Lihat browser/perangkat yang masuk ke akun pelanggan maupun admin.</p></div><button class="btn" id="refreshDevices" type="button">↻ Perbarui perangkat</button></div>
+          <div class="stats">
+            <article class="stat"><small>SEDANG AKTIF</small><strong id="deviceActiveCount">—</strong><em>Heartbeat 3 menit terakhir</em></article>
+            <article class="stat"><small>PERANGKAT TERCATAT</small><strong id="deviceTotalCount">—</strong><em>Browser yang pernah login</em></article>
+            <article class="stat"><small>AKUN TERDETEKSI</small><strong id="deviceUserCount">—</strong><em>Akun unik yang tercatat</em></article>
+          </div>
+          <div class="alert">Pemantauan mulai berjalan setelah file pembaruan dipasang. Satu perangkat dihitung berdasarkan browser dan penyimpanan lokalnya; mode privat atau penghapusan data browser dapat tercatat sebagai perangkat baru. Status online merupakan perkiraan dari aktivitas terakhir, bukan pelacakan lokasi atau identitas perangkat fisik.</div>
+          <div class="panel"><div class="panel-head"><div><h2>Riwayat perangkat</h2><p id="deviceCountText">—</p></div><input class="search" id="deviceSearch" type="search" placeholder="Cari username atau perangkat…" aria-label="Cari perangkat"></div><div id="devicesTable" class="empty">Memuat perangkat…</div></div>
+        </section>
+
+        <section class="tab" id="tab-orders">
+          <div class="page-head"><div><div class="eyebrow">ORDER MANAGEMENT</div><h1>Manajemen pesanan</h1><p>Status pembayaran hanya berubah setelah diverifikasi oleh webhook payment gateway.</p></div></div>
+          <div class="panel"><div class="panel-head"><div><h2>Semua pesanan online</h2><p>Data pelanggan hanya dapat diakses oleh pemilik akun dan administrator.</p></div><input class="search" id="orderSearch" type="search" placeholder="Cari invoice, pelanggan, WhatsApp…" aria-label="Cari pesanan"></div><div id="ordersTable" class="empty">Memuat pesanan…</div></div>
+        </section>
+
+        <section class="tab" id="tab-products">
+          <div class="page-head"><div><div class="eyebrow">CATALOG MANAGEMENT</div><h1>Katalog produk</h1><p>Tambah produk, unggah gambar, atur keterangan, varian, harga, dan stok.</p></div><button class="btn" id="addProductBtn" type="button">＋ Tambah produk</button></div>
+          <div class="panel">
+            <div class="panel-head"><div><h2>Semua produk</h2><p>Perubahan tersimpan di Supabase dan disinkronkan ke katalog pelanggan.</p></div><input class="search" id="productSearch" type="search" placeholder="Cari nama, brand, kategori…" aria-label="Cari produk"></div>
+            <div id="productsList" class="empty">Memuat katalog…</div>
+          </div>
+        </section>
+
+        <section class="tab" id="tab-support">
+          <div class="page-head"><div><div class="eyebrow">CUSTOMER CARE</div><h1>Refund & garansi</h1><p>Tinjau pengajuan pelanggan dan perbarui status penanganannya.</p></div></div>
+          <div class="panel"><div class="panel-head"><div><h2>Pengajuan refund</h2></div></div><div id="refundTable" class="empty">Memuat pengajuan…</div></div>
+          <div class="panel"><div class="panel-head"><div><h2>Klaim garansi</h2></div></div><div id="warrantyTable" class="empty">Memuat klaim…</div></div>
+        </section>
+
+        <section class="tab" id="tab-audit">
+          <div class="page-head"><div><div class="eyebrow">SECURITY & AUDIT</div><h1>Log aktivitas</h1><p>Riwayat perubahan katalog dan status pesanan oleh sistem atau administrator.</p></div></div>
+          <div class="panel"><div id="auditTable" class="empty">Memuat aktivitas…</div></div>
+        </section>
       </section>
     </div>
   </main>
 
-  <div class="modal" id="variantModal"><form class="modal-card" id="variantForm"><h2>Edit varian produk</h2><input type="hidden" id="variantId"><label class="field">Nama varian<input id="variantName" disabled></label><div class="form-row"><label class="field">Harga (Rupiah)<input id="variantPrice" type="number" min="0" step="1" placeholder="Kosongkan jika hubungi admin"></label><label class="field">Harga normal<input id="variantOriginalPrice" type="number" min="0" step="1" placeholder="Opsional"></label></div><div class="form-row"><label class="field">Status stok<select id="variantStock"><option value="available">Tersedia</option><option value="limited">Terbatas</option><option value="out_of_stock">Habis</option><option value="confirm">Konfirmasi admin</option></select></label><label class="field">Diskon aktif<select id="variantDiscount"><option value="false">Tidak</option><option value="true">Ya</option></select></label></div><label class="field">Catatan varian<textarea id="variantNote" rows="3"></textarea></label><button class="btn" type="submit">Simpan perubahan</button><button class="btn ghost" type="button" data-close-modal>Batalkan</button></form></div>
-  <div class="modal" id="productModal"><form class="modal-card" id="productForm"><h2>Edit informasi produk</h2><input type="hidden" id="productId"><label class="field">Nama produk<input id="productTitle" required></label><label class="field">Deskripsi singkat<input id="productShort"></label><label class="field">Deskripsi lengkap<textarea id="productDescription" rows="3"></textarea></label><label class="field">Informasi tambahan<textarea id="productInfo" rows="3"></textarea></label><label class="field">Status produk<select id="productActive"><option value="true">Aktif</option><option value="false">Nonaktif</option></select></label><button class="btn" type="submit">Simpan produk</button><button class="btn ghost" type="button" data-close-modal>Batalkan</button></form></div>
-  <div id="toast" class="toast hidden" role="status"></div>
-  <footer class="footer shell">RUANGDIGITAL190 · Admin Dashboard · Akses administrator dicatat dan dibatasi melalui Row Level Security.</footer>
+  <div class="modal" id="productModal" aria-hidden="true">
+    <form class="modal-card" id="productForm">
+      <div class="modal-head"><div><h2 id="productModalTitle">Tambah produk</h2><p>Isi informasi produk yang akan ditampilkan pada katalog pelanggan.</p></div><button class="mini-btn" type="button" data-close-modal aria-label="Tutup">✕</button></div>
+      <input type="hidden" id="productId">
+      <div class="form-grid">
+        <label class="field">ID produk / slug<input id="productSlug" required maxlength="48" placeholder="contoh: aplikasi-baru"><small>Huruf kecil, angka, dan tanda hubung. ID tidak dapat diubah setelah produk dibuat.</small></label>
+        <label class="field">Brand<input id="productBrand" required maxlength="80" placeholder="Nama brand"></label>
+        <label class="field">Nama produk<input id="productTitle" required maxlength="120" placeholder="Nama yang tampil di katalog"></label>
+        <label class="field">Kelompok<select id="productGroup" required><option value="apps">Aplikasi / layanan digital</option><option value="games">Game top up</option></select></label>
+        <label class="field">Kategori<input id="productCategory" required maxlength="80" placeholder="Streaming, Editing, AI, Games…"></label>
+        <label class="field">Tag<input id="productTag" maxlength="80" placeholder="Tag singkat (opsional)"></label>
+        <label class="field">Urutan katalog<input id="productSortOrder" type="number" min="0" step="1" value="100"></label>
+        <label class="field">Status produk<select id="productActive"><option value="true">Aktif — tampil di toko</option><option value="false">Nonaktif — sembunyikan</option></select></label>
+        <label class="field full">Deskripsi singkat<input id="productShort" maxlength="220" placeholder="Ringkasan singkat produk"></label>
+        <label class="field full">Deskripsi lengkap<textarea id="productDescription" rows="3" placeholder="Jelaskan produk dan layanan secara jelas"></textarea></label>
+        <label class="field full">Informasi tambahan<textarea id="productInfo" rows="3" placeholder="Ketentuan, catatan aktivasi, atau informasi penting"></textarea></label>
+        <div class="field full">
+          <span>Gambar produk</span>
+          <div class="image-editor">
+            <div class="image-preview" id="productImagePreview">Preview gambar</div>
+            <div>
+              <label class="field">Unggah gambar<input id="productImageFile" type="file" accept="image/png,image/jpeg,image/webp,image/avif"><small>PNG, JPG, WEBP, atau AVIF. Maksimal 5 MB. Gambar disimpan ke Supabase Storage.</small></label>
+              <label class="field">Atau URL gambar<input id="productImageUrl" type="url" placeholder="https://…"><small>Gunakan URL HTTPS yang dapat diakses publik.</small></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn danger hidden" id="productDeleteButton" type="button">Hapus produk</button>
+        <button class="btn ghost" type="button" data-close-modal>Batal</button>
+        <button class="btn" id="productSaveButton" type="submit">Simpan produk</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal" id="variantModal" aria-hidden="true">
+    <form class="modal-card" id="variantForm">
+      <div class="modal-head"><div><h2 id="variantModalTitle">Tambah varian</h2><p>Atur paket, harga, ketersediaan, dan catatan produk.</p></div><button class="mini-btn" type="button" data-close-modal aria-label="Tutup">✕</button></div>
+      <input type="hidden" id="variantId"><input type="hidden" id="variantProductId">
+      <div class="form-grid">
+        <label class="field full">Nama varian<input id="variantName" required maxlength="120" placeholder="Contoh: Paket 1 Bulan"></label>
+        <label class="field">Harga jual (Rupiah)<input id="variantPrice" type="number" min="0" step="1" placeholder="Kosongkan jika hubungi admin"></label>
+        <label class="field">Harga normal<input id="variantOriginalPrice" type="number" min="0" step="1" placeholder="Opsional"></label>
+        <label class="field">Status stok<select id="variantStock"><option value="available">Tersedia</option><option value="limited">Stok terbatas</option><option value="out_of_stock">Habis</option><option value="confirm">Konfirmasi admin</option></select></label>
+        <label class="field">Diskon<select id="variantDiscount"><option value="false">Tidak aktif</option><option value="true">Aktif</option></select></label>
+        <label class="field">Urutan varian<input id="variantSortOrder" type="number" min="0" step="1" value="1"></label>
+        <label class="field">Status varian<select id="variantActive"><option value="true">Aktif</option><option value="false">Nonaktif</option></select></label>
+        <label class="field full">Catatan varian<textarea id="variantNote" rows="3" placeholder="Informasi tambahan untuk varian ini"></textarea></label>
+      </div>
+      <div class="modal-actions">
+        <button class="btn danger hidden" id="variantDeleteButton" type="button">Hapus varian</button>
+        <button class="btn ghost" type="button" data-close-modal>Batal</button>
+        <button class="btn" id="variantSaveButton" type="submit">Simpan varian</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <footer class="footer shell">RUANGDIGITAL190 · Admin Control Center · Akses administrator dilindungi Supabase Auth dan Row Level Security.</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-(async function loadRuangDigitalAdminBackend() {
-  const notice = document.getElementById("backendNotice");
-  const showNotice = (message, isError = false) => {
-    if (!notice) return;
-    notice.textContent = message;
-    notice.classList.toggle("error", Boolean(isError));
-  };
-  const isConfigured = config => Boolean(
-    config &&
-    /^https:\/\/.+\.supabase\.co$/.test(String(config.supabaseUrl || "")) &&
-    typeof config.supabaseAnonKey === "string" &&
-    config.supabaseAnonKey.length > 30 &&
-    !String(config.supabaseUrl).includes("YOUR-PROJECT") &&
-    !config.supabaseAnonKey.includes("YOUR_")
-  );
-  const loadScript = src => new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = () => reject(new Error("Gagal memuat " + src));
-    document.body.appendChild(script);
-  });
-
-  try {
-    // Kompatibel dengan dua format konfigurasi yang pernah dipakai proyek:
-    // config.json (versi terbaru) dan config.js (versi awal). Tidak mengubah file konfigurasi.
-    let configLoaded = isConfigured(window.RD_CONFIG);
-
-    if (!configLoaded) {
+  <script>
+    (async function loadRuangDigitalAdminBackend() {
+      const notice = document.getElementById("backendNotice");
+      const connection = document.getElementById("connectionStatus");
       try {
         const response = await fetch("./backend/config.json", { cache: "no-store" });
-        if (response.ok) {
-          const jsonConfig = await response.json();
-          if (isConfigured(jsonConfig)) {
-            window.RD_CONFIG = jsonConfig;
-            configLoaded = true;
-          }
+        if (!response.ok) throw new Error("backend/config.json tidak ditemukan.");
+        window.RD_CONFIG = await response.json();
+        const scripts = [
+          "./backend/js/supabase-client.js",
+          "./backend/js/auth.js",
+          "./backend/js/device-tracker.js",
+          "./backend/js/admin.js"
+        ];
+        for (const src of scripts) {
+          await new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = () => reject(new Error("Gagal memuat " + src));
+            document.body.appendChild(script);
+          });
         }
-      } catch (jsonError) {
-        console.info("RUANGDIGITAL190: config.json tidak tersedia, mencoba config.js.", jsonError);
+        if (connection) {
+          connection.textContent = window.rdBackendReady ? "Supabase terhubung" : "Konfigurasi belum siap";
+          connection.classList.toggle("ready", Boolean(window.rdBackendReady));
+        }
+      } catch (error) {
+        console.error("RUANGDIGITAL190 admin backend:", error);
+        if (notice) {
+          notice.textContent = "Backend belum siap: " + error.message + " Pastikan file konfigurasi dan folder backend sudah diunggah ke root repository.";
+          notice.classList.add("error");
+        }
+        if (connection) connection.textContent = "Backend belum terhubung";
       }
-    }
-
-    if (!configLoaded) {
-      try {
-        await loadScript("./backend/config.js");
-        configLoaded = isConfigured(window.RD_CONFIG);
-      } catch (jsError) {
-        console.info("RUANGDIGITAL190: config.js tidak tersedia.", jsError);
-      }
-    }
-
-    if (!configLoaded) {
-      throw new Error("Konfigurasi Supabase belum ditemukan atau masih berisi nilai contoh. Periksa backend/config.json atau backend/config.js.");
-    }
-
-    await loadScript("./backend/js/supabase-client.js");
-    await loadScript("./backend/js/auth.js");
-    await loadScript("./backend/js/admin.js");
-
-    if (!window.rdBackendReady) {
-      showNotice(window.rdBackendMessage || "Koneksi Supabase belum siap. Periksa URL dan anon key.", true);
-      return;
-    }
-
-    showNotice("Koneksi Supabase siap. Masuk menggunakan akun administrator.");
-  } catch (error) {
-    console.error("RUANGDIGITAL190 admin backend:", error);
-    showNotice(error.message || "Backend admin belum dapat dimuat. Periksa konfigurasi dan file backend.", true);
-    const submit = document.getElementById("adminLoginSubmit");
-    if (submit) submit.disabled = true;
-  }
-})();
-</script>
+    })();
+  </script>
 </body>
 </html>
