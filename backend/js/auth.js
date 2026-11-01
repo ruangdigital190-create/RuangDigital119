@@ -91,10 +91,49 @@
   }
 
   async function login(username, password, remember = true) {
-    if (!window.rdBackendReady) throw new Error(window.rdBackendMessage);
+    if (!window.rdBackendReady) throw new Error(window.rdBackendMessage || "Backend belum siap.");
     window.rdRememberSession = Boolean(remember);
-    const { data, error } = await client().functions.invoke("username-login", { body: { username, password } });
-    if (error || !data?.access_token || !data?.refresh_token) throw new Error("Username atau password tidak sesuai, atau layanan login belum siap.");
+
+    let result;
+    try {
+      result = await client().functions.invoke("username-login", { body: { username, password } });
+    } catch (invokeError) {
+      console.error("RUANGDIGITAL190 username-login invoke:", invokeError);
+      throw new Error("Tidak dapat menghubungi layanan login. Periksa koneksi internet, CORS, dan deployment Edge Function username-login.");
+    }
+
+    const { data, error } = result || {};
+    let status = Number(error?.context?.status || error?.status || 0);
+    let serverError = data?.error || data?.message || "";
+
+    // FunctionsHttpError menyimpan respons server pada error.context.
+    if (error?.context && typeof error.context.clone === "function") {
+      try {
+        const body = await error.context.clone().json();
+        serverError = body?.error || body?.message || serverError;
+        status = status || Number(error.context.status || 0);
+      } catch (_) { /* Respons bukan JSON; gunakan status dan pesan error yang tersedia. */ }
+    }
+
+    if (error) {
+      console.error("RUANGDIGITAL190 username-login response:", { status, serverError, error });
+      if (status === 404) throw new Error("Layanan username-login belum ditemukan. Deploy Edge Function 'username-login' pada project Supabase yang sama dengan website.");
+      if (status === 429 || /too many attempts/i.test(String(serverError))) throw new Error("Terlalu banyak percobaan login. Tunggu 15 menit sebelum mencoba kembali.");
+      if (status === 401 || status === 400 || /invalid credentials/i.test(String(serverError))) throw new Error("Username atau password tidak cocok. Pastikan akun sudah terdaftar dan username ditulis dengan benar.");
+      if (status >= 500) throw new Error("Layanan login mengalami kesalahan server. Periksa secret SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, serta tabel profiles dan auth_login_attempts.");
+      throw new Error("Layanan login gagal dihubungi" + (status ? " (HTTP " + status + ")" : "") + ". Periksa deployment Edge Function dan pengaturan CORS.");
+    }
+
+    if (serverError) {
+      if (/too many attempts/i.test(String(serverError))) throw new Error("Terlalu banyak percobaan login. Tunggu 15 menit sebelum mencoba kembali.");
+      if (/invalid credentials/i.test(String(serverError))) throw new Error("Username atau password tidak cocok. Pastikan akun sudah terdaftar dan username ditulis dengan benar.");
+      throw new Error(String(serverError));
+    }
+
+    if (!data?.access_token || !data?.refresh_token) {
+      throw new Error("Layanan username-login merespons tanpa token sesi. Pastikan Edge Function yang terpasang adalah versi proyek RUANGDIGITAL190.");
+    }
+
     const { error: sessionError } = await client().auth.setSession({ access_token: data.access_token, refresh_token: data.refresh_token });
     if (sessionError) throw sessionError;
     return refreshAccount();
