@@ -1,90 +1,183 @@
--- Seed katalog asli RUANGDIGITAL190. Menjalankan ulang tidak menimpa perubahan yang dibuat admin.
--- 12 produk dan 71 varian dari kode sumber; nama/harga/stock awal dipertahankan.
+-- RUANGDIGITAL190 — SEED-PRODUCTS TERBARU — 1 November 2026
+-- 12 produk awal + 76 varian: 71 varian lama + 5 Weekly Diamond Pass MLBB.
+-- Tidak menghapus produk custom/akun/pesanan/riwayat transaksi.
+-- Produk yang sudah ada tidak ditimpa; varian yang sudah ada (berdasarkan
+-- product_id + nama, tanpa membedakan huruf besar/kecil) tidak diduplikasi.
+-- Jika administrator menghapus salah satu produk bawaan lalu file ini dijalankan
+-- ulang, produk bawaan yang hilang dapat dibuat kembali. Karena itu gunakan
+-- untuk pemasangan awal / penambahan default dengan sadar.
+--
+-- PENTING: Jalankan schema.sql versi terbaru SEBELUM file ini.
+-- Foto poster price list berada di assets/price-lists, tidak diunggah oleh SQL.
 
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('netflix', 'Netflix', 'Netflix Premium', 'apps', 'Streaming', 'Streaming', 'Pilihan paket Netflix untuk menikmati film, serial, dan dokumenter.', 'Pilih jenis paket Netflix yang tersedia dan periksa ketentuan penggunaannya sebelum memesan.', 'Admin akan membantu mengonfirmasi slot, profil, masa aktif, dan ketentuan paket yang dipilih.', 1) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('spotify', 'Spotify', 'Spotify Premium', 'apps', 'Streaming', 'Music', 'Layanan musik dan podcast untuk menemani aktivitas sehari-hari.', 'Tanyakan pilihan paket Spotify Premium yang tersedia kepada admin.', 'Durasi, jenis akun, dan metode aktivasi perlu dikonfirmasi sebelum pembayaran.', 2) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('youtube', 'YouTube', 'YouTube Premium', 'apps', 'Streaming', 'Video', 'Pengalaman menonton video dengan layanan YouTube Premium.', 'Tanyakan pilihan paket YouTube Premium yang tersedia kepada admin.', 'Jenis akses, masa aktif, dan ketentuan paket akan dikonfirmasi oleh admin.', 3) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('capcut', 'CapCut', 'CapCut Premium', 'apps', 'Editing', 'Video Editing', 'Fitur editing video premium untuk konten yang lebih maksimal.', 'Paket CapCut Premium untuk kebutuhan editing video dan pembuatan konten.', 'Tanyakan detail aktivasi, masa aktif, dan ketentuan akses kepada admin.', 4) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('alightmotion', 'Alight Motion', 'Alight Motion Premium', 'apps', 'Editing', 'Motion Design', 'Motion graphic, animasi, efek visual, dan editing video di perangkat mobile.', 'Tersedia pilihan aktivasi menggunakan email seller atau email buyer.', 'Konfirmasi alur aktivasi, masa aktif, dan ketentuan penggunaan sebelum order. Logo utama menggunakan ikon aplikasi dari listing Google Play.', 5) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('canva', 'Canva', 'Canva Pro & Canva Head', 'apps', 'Editing', 'Design', 'Desain presentasi, poster, konten, dan materi kreatif.', 'Tersedia pilihan Canva Pro Member, Canva Head, dan Lifetime.', 'Perhatikan jenis undangan email dan tipe akun pada setiap varian. Hubungi admin untuk memastikan ketentuan paket.', 6) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('chatgpt', 'ChatGPT', 'ChatGPT Plan', 'apps', 'AI & Produktivitas', 'AI Assistant', 'Asisten AI untuk ide, belajar, menulis, dan produktivitas.', 'Lihat pilihan paket ChatGPT yang tersedia.', 'Pastikan memahami jenis akses sharing dan ketentuan penggunaan sebelum melakukan pemesanan.', 7) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('gemini', 'Gemini', 'Gemini AI + Google Drive', 'apps', 'AI & Produktivitas', 'AI & Cloud', 'Pilihan layanan Gemini AI, Google Drive 2TB, dan Veo sesuai paket.', 'Paket dengan kombinasi Gemini AI, Google Drive 2TB, dan Veo sesuai jenis akses.', 'Masa aktif dan jenis akses berbeda pada setiap paket. Pastikan detail layanan dikonfirmasi oleh admin.', 8) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('grammarly', 'Grammarly', 'Grammarly Premium', 'apps', 'AI & Produktivitas', 'Writing', 'Bantu mengecek tata bahasa, ejaan, dan kualitas tulisan.', 'Pilihan Grammarly Premium untuk kebutuhan menulis, belajar, dan pekerjaan.', 'Tanyakan perbedaan akses sharing dan privat kepada admin sebelum memesan.', 9) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('quillbot', 'QuillBot', 'QuillBot Premium', 'apps', 'AI & Produktivitas', 'Writing', 'Alat bantu parafrase dan penyuntingan tulisan.', 'Paket QuillBot Premium untuk membantu proses penyuntingan dan parafrase.', 'Tanyakan stok dan detail akses kepada admin.', 10) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('mlbb', 'Mobile Legends', 'Mobile Legends: Bang Bang', 'games', 'Game Top Up', '25 Paket Diamond', 'Top up Diamond MLBB dengan 25 pilihan nominal dan harga tertera.', 'Pilih nominal Diamond Mobile Legends: Bang Bang. Masukkan User ID dan Zone ID saat menghubungi admin.', 'Harga mengikuti daftar harga toko. Periksa kembali User ID dan Zone ID sebelum melakukan pembayaran. Logo utama menggunakan ikon aplikasi resmi di Google Play.', 11) ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.products (id,brand,title,group_name,category,tag,short_description,description,info,sort_order) VALUES ('freefire', 'Free Fire', 'Free Fire Diamond', 'games', 'Game Top Up', '20 Diamond + 3 Membership', '20 pilihan nominal Diamond, Membership Mingguan, BP Card, dan Membership Bulanan.', 'Pilih nominal Diamond atau item membership Free Fire. Harga ditampilkan sesuai daftar harga toko.', 'Pastikan Player ID benar sebelum transaksi. Logo utama menggunakan aset logo Free Fire dari halaman brand resmi Garena.', 12) ON CONFLICT (id) DO NOTHING;
+begin;
 
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('netflix', '2U1P — 1 Bulan', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan slot kepada admin.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('netflix', '1U1P — 1 Bulan', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan slot kepada admin.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('netflix', 'Semiprivat — 1 Bulan', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan slot kepada admin.', 3) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('spotify', 'Paket Spotify Premium', NULL, NULL, false, 'confirm', 'Tanyakan durasi dan jenis paket yang tersedia.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('youtube', 'Paket YouTube Premium', NULL, NULL, false, 'confirm', 'Tanyakan durasi dan jenis paket yang tersedia.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('capcut', 'Privat — 7 Hari', NULL, NULL, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('capcut', 'Privat — 1 Bulan', NULL, NULL, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('alightmotion', 'Email Seller — 1 Tahun', NULL, NULL, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('alightmotion', 'Email Buyer — 1 Tahun', NULL, NULL, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('canva', 'Pro Member — 1 Bulan (Invite Email Buyer)', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('canva', 'Pro Member — 2 Bulan (Invite Email Buyer)', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('canva', 'Pro Member — 3 Bulan (Invite Email Buyer)', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 3) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('canva', 'Canva Head — 1 Bulan Full', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 4) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('canva', 'Canva Lifetime (Invite Email Buyer)', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 5) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('canva', 'Canva Head Lifetime', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 6) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('chatgpt', 'GO Sharing — 1 Bulan', NULL, NULL, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('chatgpt', 'Plus Sharing — 1 Bulan', NULL, NULL, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('chatgpt', 'GO Sharing — 3 Bulan', NULL, NULL, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 3) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('gemini', 'Gemini AI + GDrive 2TB + Veo Invite — 18 Bulan', NULL, NULL, false, 'confirm', 'Konfirmasi detail akses dan masa aktif.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('gemini', 'Gemini AI + GDrive 2TB + Veo Head / Owner — 1 Tahun', NULL, NULL, false, 'confirm', 'Konfirmasi detail akses dan masa aktif.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('grammarly', 'Sharing — 1 Bulan', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan akses.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('grammarly', 'Privat — 1 Bulan', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan akses.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('quillbot', 'Sharing — 1 Bulan', NULL, NULL, false, 'confirm', 'Konfirmasi harga dan akses.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '30 Diamond', 11000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '85 Diamond', 28000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '100 Diamond', 33000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 3) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '148 Diamond', 48000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 4) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '240 Diamond', 75000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 5) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '305 Diamond', 95000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 6) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '370 Diamond', 115000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 7) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '408 Diamond', 125000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 8) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '518 Diamond', 160000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 9) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '568 Diamond', 170000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 10) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '716 Diamond', 215000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 11) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '790 Diamond', 238000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 12) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '875 Diamond', 258000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 13) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '966 Diamond', 285000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 14) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '1065 Diamond', 318000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 15) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '1136 Diamond', 338000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 16) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '1358 Diamond', 405000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 17) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '1506 Diamond', 440000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 18) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '1704 Diamond', 500000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 19) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '2010 Diamond', 555000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 20) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '2232 Diamond', 620000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 21) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '2578 Diamond', 720000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 22) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '2855 Diamond', 805000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 23) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '3024 Diamond', 850000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 24) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('mlbb', '3198 Diamond', 900000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 25) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '50 Diamond', 8000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 1) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '90 Diamond', 14000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 2) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '100 Diamond', 16000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 3) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '140 Diamond', 19000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 4) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '200 Diamond', 27000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 5) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '355 Diamond', 45000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 6) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '720 Diamond', 85000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 7) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '800 Diamond', 95000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 8) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '1000 Diamond', 120000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 9) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '1440 Diamond', 170000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 10) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '1800 Diamond', 210000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 11) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '2180 Diamond', 255000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 12) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '2720 Diamond', 330000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 13) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '3640 Diamond', 420000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 14) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '4000 Diamond', 460000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 15) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '4450 Diamond', 510000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 16) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '5500 Diamond', 620000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 17) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '6000 Diamond', 685000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 18) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '6550 Diamond', 750000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 19) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', '7290 Diamond', 830000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 20) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', 'Membership Mingguan', 28000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 21) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', 'BP Card', 42000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 22) ON CONFLICT (product_id,sort_order) DO NOTHING;
-INSERT INTO public.product_variants (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order) VALUES ('freefire', 'Membership Bulanan', 78000, NULL, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 23) ON CONFLICT (product_id,sort_order) DO NOTHING;
+-- Hindari seed paralel ketika proyek sedang melayani transaksi / edit katalog.
+lock table public.products, public.product_variants in share row exclusive mode;
 
--- Verifikasi jumlah data setelah import:
-SELECT (SELECT count(*) FROM public.products) AS total_produk, (SELECT count(*) FROM public.product_variants) AS total_varian;
+-- 1) Produk bawaan: pertahankan semua perubahan yang dilakukan admin.
+insert into public.products
+  (id,brand,title,group_name,category,tag,short_description,description,info,sort_order)
+values
+  ('netflix', 'Netflix', 'Netflix Premium', 'apps', 'Streaming', 'Streaming', 'Pilihan paket Netflix untuk menikmati film, serial, dan dokumenter.', 'Pilih jenis paket Netflix yang tersedia dan periksa ketentuan penggunaannya sebelum memesan.', 'Admin akan membantu mengonfirmasi slot, profil, masa aktif, dan ketentuan paket yang dipilih.', 1),
+  ('spotify', 'Spotify', 'Spotify Premium', 'apps', 'Streaming', 'Music', 'Layanan musik dan podcast untuk menemani aktivitas sehari-hari.', 'Tanyakan pilihan paket Spotify Premium yang tersedia kepada admin.', 'Durasi, jenis akun, dan metode aktivasi perlu dikonfirmasi sebelum pembayaran.', 2),
+  ('youtube', 'YouTube', 'YouTube Premium', 'apps', 'Streaming', 'Video', 'Pengalaman menonton video dengan layanan YouTube Premium.', 'Tanyakan pilihan paket YouTube Premium yang tersedia kepada admin.', 'Jenis akses, masa aktif, dan ketentuan paket akan dikonfirmasi oleh admin.', 3),
+  ('capcut', 'CapCut', 'CapCut Premium', 'apps', 'Editing', 'Video Editing', 'Fitur editing video premium untuk konten yang lebih maksimal.', 'Paket CapCut Premium untuk kebutuhan editing video dan pembuatan konten.', 'Tanyakan detail aktivasi, masa aktif, dan ketentuan akses kepada admin.', 4),
+  ('alightmotion', 'Alight Motion', 'Alight Motion Premium', 'apps', 'Editing', 'Motion Design', 'Motion graphic, animasi, efek visual, dan editing video di perangkat mobile.', 'Tersedia pilihan aktivasi menggunakan email seller atau email buyer.', 'Konfirmasi alur aktivasi, masa aktif, dan ketentuan penggunaan sebelum order. Logo utama menggunakan ikon aplikasi dari listing Google Play.', 5),
+  ('canva', 'Canva', 'Canva Pro & Canva Head', 'apps', 'Editing', 'Design', 'Desain presentasi, poster, konten, dan materi kreatif.', 'Tersedia pilihan Canva Pro Member, Canva Head, dan Lifetime.', 'Perhatikan jenis undangan email dan tipe akun pada setiap varian. Hubungi admin untuk memastikan ketentuan paket.', 6),
+  ('chatgpt', 'ChatGPT', 'ChatGPT Plan', 'apps', 'AI & Produktivitas', 'AI Assistant', 'Asisten AI untuk ide, belajar, menulis, dan produktivitas.', 'Lihat pilihan paket ChatGPT yang tersedia.', 'Pastikan memahami jenis akses sharing dan ketentuan penggunaan sebelum melakukan pemesanan.', 7),
+  ('gemini', 'Gemini', 'Gemini AI + Google Drive', 'apps', 'AI & Produktivitas', 'AI & Cloud', 'Pilihan layanan Gemini AI, Google Drive 2TB, dan Veo sesuai paket.', 'Paket dengan kombinasi Gemini AI, Google Drive 2TB, dan Veo sesuai jenis akses.', 'Masa aktif dan jenis akses berbeda pada setiap paket. Pastikan detail layanan dikonfirmasi oleh admin.', 8),
+  ('grammarly', 'Grammarly', 'Grammarly Premium', 'apps', 'AI & Produktivitas', 'Writing', 'Bantu mengecek tata bahasa, ejaan, dan kualitas tulisan.', 'Pilihan Grammarly Premium untuk kebutuhan menulis, belajar, dan pekerjaan.', 'Tanyakan perbedaan akses sharing dan privat kepada admin sebelum memesan.', 9),
+  ('quillbot', 'QuillBot', 'QuillBot Premium', 'apps', 'AI & Produktivitas', 'Writing', 'Alat bantu parafrase dan penyuntingan tulisan.', 'Paket QuillBot Premium untuk membantu proses penyuntingan dan parafrase.', 'Tanyakan stok dan detail akses kepada admin.', 10),
+  ('mlbb', 'Mobile Legends', 'Mobile Legends: Bang Bang', 'games', 'Game Top Up', '25 Diamond + 5 Weekly Pass', 'Top up MLBB dengan 25 pilihan nominal Diamond dan 5 pilihan Weekly Diamond Pass.', 'Pilih nominal Diamond Mobile Legends: Bang Bang atau Weekly Diamond Pass 1x–5x. Masukkan User ID dan Zone ID dengan benar saat pemesanan.', 'Harga mengikuti daftar harga toko. Periksa kembali User ID dan Zone ID sebelum melakukan pembayaran. Weekly Diamond Pass tersedia dalam pilihan 1x sampai 5x. Logo utama menggunakan ikon aplikasi resmi di Google Play.', 11),
+  ('freefire', 'Free Fire', 'Free Fire Diamond', 'games', 'Game Top Up', '20 Diamond + 3 Membership', '20 pilihan nominal Diamond, Membership Mingguan, BP Card, dan Membership Bulanan.', 'Pilih nominal Diamond atau item membership Free Fire. Harga ditampilkan sesuai daftar harga toko.', 'Pastikan Player ID benar sebelum transaksi. Logo utama menggunakan aset logo Free Fire dari halaman brand resmi Garena.', 12)
+on conflict (id) do nothing;
+
+-- 2) Perbarui deskripsi MLBB HANYA jika masih menggunakan teks bawaan lama.
+--    Perubahan custom admin di kolom ini tidak ditimpa.
+update public.products
+set tag = '25 Diamond + 5 Weekly Pass',
+    short_description = 'Top up MLBB dengan 25 pilihan nominal Diamond dan 5 pilihan Weekly Diamond Pass.',
+    description = 'Pilih nominal Diamond Mobile Legends: Bang Bang atau Weekly Diamond Pass 1x–5x. Masukkan User ID dan Zone ID dengan benar saat pemesanan.',
+    info = 'Harga mengikuti daftar harga toko. Periksa kembali User ID dan Zone ID sebelum melakukan pembayaran. Weekly Diamond Pass tersedia dalam pilihan 1x sampai 5x. Logo utama menggunakan ikon aplikasi resmi di Google Play.',
+    updated_at = now()
+where id = 'mlbb'
+  and tag = '25 Paket Diamond'
+  and short_description = 'Top up Diamond MLBB dengan 25 pilihan nominal dan harga tertera.'
+  and description = 'Pilih nominal Diamond Mobile Legends: Bang Bang. Masukkan User ID dan Zone ID saat menghubungi admin.';
+
+-- 3) Varian bawaan; penentuan sort_order baru berdasarkan urutan per produk.
+--    Jika varian sudah ada dengan nama sama, harga, stok, catatan,
+--    gambar, dan urutan hasil edit admin tetap dipertahankan.
+with seed_variants
+  (product_id,name,price,original_price,discount_enabled,stock_status,note,desired_sort_order) as (
+  values
+  ('netflix', '2U1P — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan slot kepada admin.', 1),
+  ('netflix', '1U1P — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan slot kepada admin.', 2),
+  ('netflix', 'Semiprivat — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan slot kepada admin.', 3),
+  ('spotify', 'Paket Spotify Premium', NULL, NULL::bigint, false, 'confirm', 'Tanyakan durasi dan jenis paket yang tersedia.', 1),
+  ('youtube', 'Paket YouTube Premium', NULL, NULL::bigint, false, 'confirm', 'Tanyakan durasi dan jenis paket yang tersedia.', 1),
+  ('capcut', 'Privat — 7 Hari', NULL, NULL::bigint, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 1),
+  ('capcut', 'Privat — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 2),
+  ('alightmotion', 'Email Seller — 1 Tahun', NULL, NULL::bigint, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 1),
+  ('alightmotion', 'Email Buyer — 1 Tahun', NULL, NULL::bigint, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 2),
+  ('canva', 'Pro Member — 1 Bulan (Invite Email Buyer)', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 1),
+  ('canva', 'Pro Member — 2 Bulan (Invite Email Buyer)', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 2),
+  ('canva', 'Pro Member — 3 Bulan (Invite Email Buyer)', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 3),
+  ('canva', 'Canva Head — 1 Bulan Full', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 4),
+  ('canva', 'Canva Lifetime (Invite Email Buyer)', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 5),
+  ('canva', 'Canva Head Lifetime', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan ketentuan aktivasi.', 6),
+  ('chatgpt', 'GO Sharing — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 1),
+  ('chatgpt', 'Plus Sharing — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 2),
+  ('chatgpt', 'GO Sharing — 3 Bulan', NULL, NULL::bigint, false, 'confirm', 'Harga dan stok dikonfirmasi admin.', 3),
+  ('gemini', 'Gemini AI + GDrive 2TB + Veo Invite — 18 Bulan', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi detail akses dan masa aktif.', 1),
+  ('gemini', 'Gemini AI + GDrive 2TB + Veo Head / Owner — 1 Tahun', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi detail akses dan masa aktif.', 2),
+  ('grammarly', 'Sharing — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan akses.', 1),
+  ('grammarly', 'Privat — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan akses.', 2),
+  ('quillbot', 'Sharing — 1 Bulan', NULL, NULL::bigint, false, 'confirm', 'Konfirmasi harga dan akses.', 1),
+  ('mlbb', '30 Diamond', 11000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 1),
+  ('mlbb', '85 Diamond', 28000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 2),
+  ('mlbb', '100 Diamond', 33000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 3),
+  ('mlbb', '148 Diamond', 48000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 4),
+  ('mlbb', '240 Diamond', 75000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 5),
+  ('mlbb', '305 Diamond', 95000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 6),
+  ('mlbb', '370 Diamond', 115000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 7),
+  ('mlbb', '408 Diamond', 125000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 8),
+  ('mlbb', '518 Diamond', 160000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 9),
+  ('mlbb', '568 Diamond', 170000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 10),
+  ('mlbb', '716 Diamond', 215000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 11),
+  ('mlbb', '790 Diamond', 258000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 12),
+  ('mlbb', '875 Diamond', 258000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 13),
+  ('mlbb', '966 Diamond', 285000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 14),
+  ('mlbb', '1065 Diamond', 318000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 15),
+  ('mlbb', '1136 Diamond', 338000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 16),
+  ('mlbb', '1358 Diamond', 405000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 17),
+  ('mlbb', '1506 Diamond', 440000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 18),
+  ('mlbb', '1704 Diamond', 500000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 19),
+  ('mlbb', '2010 Diamond', 555000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 20),
+  ('mlbb', '2232 Diamond', 620000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 21),
+  ('mlbb', '2578 Diamond', 720000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 22),
+  ('mlbb', '2855 Diamond', 805000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 23),
+  ('mlbb', '3024 Diamond', 850000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 24),
+  ('mlbb', '3198 Diamond', 900000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 25),
+  ('mlbb', 'Weekly Diamond Pass', 33000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 26),
+  ('mlbb', 'Weekly Diamond Pass 2x', 65000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 27),
+  ('mlbb', 'Weekly Diamond Pass 3x', 95000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 28),
+  ('mlbb', 'Weekly Diamond Pass 4x', 130000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 29),
+  ('mlbb', 'Weekly Diamond Pass 5x', 161000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 30),
+  ('freefire', '50 Diamond', 8000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 1),
+  ('freefire', '90 Diamond', 14000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 2),
+  ('freefire', '100 Diamond', 16000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 3),
+  ('freefire', '140 Diamond', 19000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 4),
+  ('freefire', '200 Diamond', 27000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 5),
+  ('freefire', '355 Diamond', 45000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 6),
+  ('freefire', '720 Diamond', 85000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 7),
+  ('freefire', '800 Diamond', 95000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 8),
+  ('freefire', '1000 Diamond', 120000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 9),
+  ('freefire', '1440 Diamond', 170000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 10),
+  ('freefire', '1800 Diamond', 210000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 11),
+  ('freefire', '2180 Diamond', 255000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 12),
+  ('freefire', '2720 Diamond', 330000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 13),
+  ('freefire', '3640 Diamond', 420000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 14),
+  ('freefire', '4000 Diamond', 460000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 15),
+  ('freefire', '4450 Diamond', 510000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 16),
+  ('freefire', '5500 Diamond', 620000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 17),
+  ('freefire', '6000 Diamond', 685000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 18),
+  ('freefire', '6550 Diamond', 750000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 19),
+  ('freefire', '7290 Diamond', 830000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 20),
+  ('freefire', 'Membership Mingguan', 28000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 21),
+  ('freefire', 'BP Card', 42000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 22),
+  ('freefire', 'Membership Bulanan', 78000, NULL::bigint, false, 'confirm', 'Konfirmasi stok sebelum pembayaran.', 23)
+),
+missing_variants as (
+  select s.*,
+         row_number() over (
+           partition by s.product_id order by s.desired_sort_order
+         )::integer as new_position
+  from seed_variants s
+  where exists (select 1 from public.products p where p.id = s.product_id)
+    and not exists (
+      select 1 from public.product_variants current_variant
+      where current_variant.product_id = s.product_id
+        and lower(btrim(current_variant.name)) = lower(btrim(s.name))
+    )
+),
+last_positions as (
+  select product_id, coalesce(max(sort_order),0) as last_sort_order
+  from public.product_variants
+  group by product_id
+)
+insert into public.product_variants
+  (product_id,name,price,original_price,discount_enabled,stock_status,note,sort_order,is_active)
+select
+  mv.product_id,
+  mv.name,
+  mv.price,
+  mv.original_price,
+  mv.discount_enabled,
+  mv.stock_status,
+  mv.note,
+  coalesce(lp.last_sort_order,0)+mv.new_position,
+  true
+from missing_variants mv
+left join last_positions lp on lp.product_id = mv.product_id
+on conflict (product_id,sort_order) do nothing;
+
+-- 4) Koreksi harga bawaan lama dari poster MLBB Rp238.000 menjadi Rp258.000.
+--    HANYA menyentuh baris yang masih berharga Rp238.000.
+update public.product_variants
+set price = 258000, updated_at = now()
+where product_id = 'mlbb'
+  and lower(btrim(name)) = '790 diamond'
+  and price = 238000;
+
+commit;
+
+-- VERIFIKASI: jumlah bisa >12 / >76 jika admin telah menambah produk custom.
+select
+  (select count(*) from public.products) as jumlah_produk_total,
+  (select count(*) from public.product_variants) as jumlah_varian_total,
+  (select count(*) from public.product_variants where product_id='mlbb') as varian_mlbb,
+  (select count(*) from public.product_variants where product_id='mlbb'
+     and lower(name) like 'weekly diamond pass%') as weekly_diamond_pass_mlbb,
+  (select count(*) from public.product_variants where product_id='freefire') as varian_freefire;
