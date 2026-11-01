@@ -6,21 +6,46 @@
 
   async function syncCatalog() {
     if (!window.rdBackendReady || !window.RD_PRODUCTS || !client()) return false;
-    const { data, error } = await client().from("products")
-      .select("id,brand,title,group_name,category,tag,short_description,description,info,sort_order,product_variants(id,name,price,original_price,discount_enabled,stock_status,note,sort_order)")
+
+    const baseSelect = "id,brand,title,group_name,category,tag,short_description,description,info,sort_order,product_variants(id,name,price,original_price,discount_enabled,stock_status,note,sort_order)";
+    let result = await client().from("products")
+      .select("id,brand,title,group_name,category,tag,short_description,description,info,image_url,sort_order,product_variants(id,name,price,original_price,discount_enabled,stock_status,note,sort_order)")
       .eq("is_active", true).order("sort_order", { ascending: true })
       .order("sort_order", { ascending: true, foreignTable: "product_variants" });
+
+    // Existing deployments can continue to display the embedded logos until the image migration is run.
+    if (result.error && /image_url|column/i.test(result.error.message || "")) {
+      result = await client().from("products")
+        .select(baseSelect)
+        .eq("is_active", true).order("sort_order", { ascending: true })
+        .order("sort_order", { ascending: true, foreignTable: "product_variants" });
+    }
+    const { data, error } = result;
     if (error) { console.warn("Catalog database sync failed; static catalog remains active.", error); return false; }
     if (!Array.isArray(data) || !data.length) return false;
+
     const logos = window.RD_LOGOS || {};
     const mapped = data.map(product => ({
-      id: product.id, brand: product.brand, title: product.title, group: product.group_name,
-      category: product.category, tag: product.tag, logo: logos[product.id] || logos.brand || "",
-      fallback: "", short: product.short_description || "", description: product.description || "",
-      info: product.info || "", variants: (product.product_variants || []).map(variant => ({
-        id: variant.id, backendVariantId: variant.id, name: variant.name, price: variant.price,
-        originalPrice: variant.original_price, discountEnabled: variant.discount_enabled,
-        stock: variant.stock_status, note: variant.note || ""
+      id: product.id,
+      brand: product.brand,
+      title: product.title,
+      group: product.group_name,
+      category: product.category,
+      tag: product.tag,
+      logo: product.image_url || logos[product.id] || logos.brand || "",
+      fallback: logos[product.id] || logos.brand || "",
+      short: product.short_description || "",
+      description: product.description || "",
+      info: product.info || "",
+      variants: (product.product_variants || []).map(variant => ({
+        id: variant.id,
+        backendVariantId: variant.id,
+        name: variant.name,
+        price: variant.price,
+        originalPrice: variant.original_price,
+        discountEnabled: variant.discount_enabled,
+        stock: variant.stock_status,
+        note: variant.note || ""
       }))
     }));
     if (!mapped.length) return false;

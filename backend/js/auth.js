@@ -128,6 +128,8 @@
 
   async function logout() {
     if (window.rdBackendReady) {
+      // Mark this browser session inactive before Supabase clears the user context.
+      await window.RDDeviceTracker?.markInactive?.();
       const { error } = await client().auth.signOut();
       if (error) throw error;
     }
