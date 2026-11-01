@@ -1468,6 +1468,45 @@
     }
 
   </style>
+
+  <style id="rd-price-list-styles">
+    .price-list-section{padding-top:26px}
+    .price-list-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:0 0 16px}
+    .price-list-choice{min-width:0;display:flex;align-items:center;gap:13px;padding:16px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(135deg,rgba(20,28,52,.96),rgba(11,17,34,.96));color:var(--ink);text-align:left;cursor:pointer;transition:border-color .2s,transform .2s,background .2s}
+    .price-list-choice:hover,.price-list-choice[aria-expanded="true"]{border-color:rgba(82,228,223,.55);background:linear-gradient(135deg,rgba(82,228,223,.10),rgba(139,114,255,.10));transform:translateY(-2px)}
+    .price-list-choice-icon{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;border-radius:13px;background:rgba(82,228,223,.10);font-size:23px}
+    .price-list-choice-copy{min-width:0;flex:1}
+    .price-list-choice-copy strong{display:block;font:700 13px "Space Grotesk",sans-serif}
+    .price-list-choice-copy small{display:block;margin-top:4px;color:var(--muted);font-size:9px;line-height:1.5}
+    .price-list-choice-arrow{color:var(--cyan);font-size:19px}
+    .price-list-panel{overflow:hidden;margin:0 0 13px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(150deg,rgba(20,27,51,.96),rgba(10,15,30,.98));box-shadow:0 14px 34px rgba(0,0,0,.15)}
+    .price-list-panel[open]{border-color:rgba(82,228,223,.32)}
+    .price-list-panel>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;list-style:none;color:var(--ink);font:700 13px "Space Grotesk",sans-serif}
+    .price-list-panel>summary::-webkit-details-marker{display:none}
+    .price-list-panel>summary::marker{content:""}
+    .price-list-summary-main{display:flex;align-items:center;gap:10px;min-width:0}
+    .price-list-summary-main span:first-child{font-size:21px}
+    .price-list-summary-main small{display:block;margin-top:3px;color:var(--muted);font:500 9px "DM Sans",sans-serif}
+    .price-list-summary-state{flex:0 0 auto;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--cyan);font:700 9px "DM Sans",sans-serif}
+    .price-list-panel[open] .price-list-summary-state{background:rgba(82,228,223,.09)}
+    .price-list-body{padding:0 16px 17px;border-top:1px solid var(--line)}
+    .price-list-description{margin:13px 0;color:var(--muted);font-size:10px;line-height:1.7}
+    .price-list-image-frame{overflow:hidden;max-width:980px;margin:0 auto;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:#090d18;box-shadow:0 12px 28px rgba(0,0,0,.25)}
+    .price-list-image-frame img{display:block;width:100%;height:auto;object-fit:contain}
+    .price-list-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:13px}
+    .price-list-download{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:10px 15px;border:1px solid rgba(82,228,223,.28);border-radius:12px;background:rgba(82,228,223,.09);color:#dffffd;font-size:10px;font-weight:800;text-decoration:none}
+    .price-list-download:hover{background:rgba(82,228,223,.16);border-color:var(--cyan)}
+    .price-list-note{margin:13px 0 0;color:#8290ad;font-size:9px;line-height:1.7;text-align:center}
+    @media(max-width:560px){
+      .price-list-choice-grid{grid-template-columns:1fr;gap:9px}
+      .price-list-choice{padding:13px}
+      .price-list-panel>summary{padding:13px}
+      .price-list-body{padding:0 10px 12px}
+      .price-list-image-frame{border-radius:10px}
+      .price-list-actions .btn,.price-list-download{width:100%}
+    }
+  </style>
+
 </head>
 <body class="intro-active">
   <div class="intro-screen" id="introScreen" role="status" aria-live="polite" aria-label="Selamat datang di RUANGDIGITAL190">
@@ -1495,6 +1534,7 @@
       <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
         <a href="#beranda" data-nav="beranda" class="active">Beranda</a>
         <a href="#produk" data-nav="produk">Katalog</a>
+        <a href="#daftar-harga" data-nav="daftar-harga">Price List</a>
         <a href="#cara-order" data-nav="cara-order">Cara Order</a>
         <a href="#bantuan" data-nav="bantuan">Pusat Bantuan</a>
         <a href="#informasi" data-nav="informasi">Informasi</a>
@@ -1557,6 +1597,63 @@
           <span class="catalog-status-note">Setiap produk ditampilkan satu kali.</span>
         </div>
         <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section price-list-section" id="daftar-harga">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">PRICE LIST GAME</div>
+            <h2>Pilih daftar harga game.</h2>
+            <p>Pilih Mobile Legends atau Free Fire untuk membuka poster harga. Setiap daftar dapat dibuka, ditutup, dan diunduh untuk disimpan di perangkat.</p>
+          </div>
+        </div>
+        <div class="price-list-choice-grid" aria-label="Pilih daftar harga">
+          <button class="price-list-choice" type="button" data-price-list-choice="priceListMlbb" aria-controls="priceListMlbb" aria-expanded="false">
+            <span class="price-list-choice-icon" aria-hidden="true">💎</span>
+            <span class="price-list-choice-copy"><strong>Mobile Legends: Bang Bang</strong><small>Diamond dan Weekly Diamond Pass</small></span>
+            <span class="price-list-choice-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="price-list-choice" type="button" data-price-list-choice="priceListFreeFire" aria-controls="priceListFreeFire" aria-expanded="false">
+            <span class="price-list-choice-icon" aria-hidden="true">🔥</span>
+            <span class="price-list-choice-copy"><strong>Free Fire</strong><small>Diamond dan paket membership</small></span>
+            <span class="price-list-choice-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>
+
+        <details class="price-list-panel" id="priceListMlbb">
+          <summary>
+            <span class="price-list-summary-main"><span aria-hidden="true">💎</span><span>Price List Mobile Legends<small>Diamond + Weekly Diamond Pass</small></span></span>
+            <span class="price-list-summary-state">Buka daftar</span>
+          </summary>
+          <div class="price-list-body">
+            <p class="price-list-description">Daftar harga Mobile Legends: Bang Bang dari RUANGDIGITAL190. Tekan tombol unduh untuk menyimpan poster ke perangkat.</p>
+            <div class="price-list-image-frame">
+              <img src="./assets/price-lists/mlbb-price-list.webp" alt="Price list Diamond dan Weekly Diamond Pass Mobile Legends RUANGDIGITAL190" loading="lazy" decoding="async">
+            </div>
+            <div class="price-list-actions">
+              <a class="price-list-download" href="./assets/price-lists/mlbb-price-list.png" download="RUANGDIGITAL190-Price-List-MLBB.png">⬇ Unduh Price List MLBB</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="price-list-panel" id="priceListFreeFire">
+          <summary>
+            <span class="price-list-summary-main"><span aria-hidden="true">🔥</span><span>Price List Free Fire<small>Diamond + Membership</small></span></span>
+            <span class="price-list-summary-state">Buka daftar</span>
+          </summary>
+          <div class="price-list-body">
+            <p class="price-list-description">Daftar harga Free Fire dari RUANGDIGITAL190. Tekan tombol unduh untuk menyimpan poster ke perangkat.</p>
+            <div class="price-list-image-frame">
+              <img src="./assets/price-lists/freefire-price-list.webp" alt="Price list Diamond dan Membership Free Fire RUANGDIGITAL190" loading="lazy" decoding="async">
+            </div>
+            <div class="price-list-actions">
+              <a class="price-list-download" href="./assets/price-lists/freefire-price-list.jpeg" download="RUANGDIGITAL190-Price-List-Free-Fire.jpeg">⬇ Unduh Price List Free Fire</a>
+            </div>
+          </div>
+        </details>
+        <p class="price-list-note">Harga dan ketersediaan transaksi tetap mengikuti katalog aktif serta konfirmasi admin sebelum pembayaran.</p>
       </div>
     </section>
 
@@ -1895,11 +1992,11 @@ const PRODUCTS = [
     ]
   },
   {
-    id: "mlbb", brand: "Mobile Legends", title: "Mobile Legends: Bang Bang", group: "games", category: "Game Top Up", tag: "25 Paket Diamond",
+    id: "mlbb", brand: "Mobile Legends", title: "Mobile Legends: Bang Bang", group: "games", category: "Game Top Up", tag: "25 Diamond + 5 Weekly Pass",
     logo: "", fallback: "",
-    short: "Top up Diamond MLBB dengan 25 pilihan nominal dan harga tertera.",
-    description: "Pilih nominal Diamond Mobile Legends: Bang Bang. Masukkan User ID dan Zone ID saat menghubungi admin.",
-    info: "Harga mengikuti daftar harga toko. Periksa kembali User ID dan Zone ID sebelum melakukan pembayaran. Logo utama menggunakan ikon aplikasi resmi di Google Play.",
+    short: "Top up MLBB dengan 25 pilihan nominal Diamond dan 5 pilihan Weekly Diamond Pass.",
+    description: "Pilih nominal Diamond Mobile Legends: Bang Bang atau Weekly Diamond Pass 1x–5x. Masukkan User ID dan Zone ID dengan benar saat pemesanan.",
+    info: "Harga mengikuti daftar harga toko. Periksa kembali User ID dan Zone ID sebelum melakukan pembayaran. Weekly Diamond Pass tersedia dalam pilihan 1x sampai 5x. Logo utama menggunakan ikon aplikasi resmi di Google Play.",
     variants: [
       { name: "30 Diamond", price: 11000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
       { name: "85 Diamond", price: 28000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
@@ -1912,7 +2009,7 @@ const PRODUCTS = [
       { name: "518 Diamond", price: 160000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
       { name: "568 Diamond", price: 170000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
       { name: "716 Diamond", price: 215000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
-      { name: "790 Diamond", price: 238000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
+      { name: "790 Diamond", price: 258000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
       { name: "875 Diamond", price: 258000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
       { name: "966 Diamond", price: 285000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
       { name: "1065 Diamond", price: 318000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
@@ -1925,7 +2022,12 @@ const PRODUCTS = [
       { name: "2578 Diamond", price: 720000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
       { name: "2855 Diamond", price: 805000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
       { name: "3024 Diamond", price: 850000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
-      { name: "3198 Diamond", price: 900000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." }
+      { name: "3198 Diamond", price: 900000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
+      { name: "Weekly Diamond Pass", price: 33000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
+      { name: "Weekly Diamond Pass 2x", price: 65000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
+      { name: "Weekly Diamond Pass 3x", price: 95000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
+      { name: "Weekly Diamond Pass 4x", price: 130000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." },
+      { name: "Weekly Diamond Pass 5x", price: 161000, originalPrice: null, discountEnabled: false, stock: "confirm", note: "Konfirmasi stok sebelum pembayaran." }
     ]
   },
   {
@@ -2007,6 +2109,42 @@ function wireLogoFallbacks(root=document){
     }, {once:true});
   });
 }
+
+function initPriceListPanels(){
+  const panels = $$(".price-list-panel");
+  const choices = $$("[data-price-list-choice]");
+  if (!panels.length || !choices.length) return;
+  const sync = () => {
+    choices.forEach(button => {
+      const panel = document.getElementById(button.dataset.priceListChoice);
+      const isOpen = Boolean(panel && panel.open);
+      button.setAttribute("aria-expanded", String(isOpen));
+      const arrow = button.querySelector(".price-list-choice-arrow");
+      if (arrow) arrow.textContent = isOpen ? "⌄" : "↗";
+    });
+    panels.forEach(panel => {
+      const state = panel.querySelector(".price-list-summary-state");
+      if (state) state.textContent = panel.open ? "Tutup daftar" : "Buka daftar";
+    });
+  };
+  choices.forEach(button => button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.priceListChoice);
+    if (!target) return;
+    const shouldOpen = !target.open;
+    panels.forEach(panel => { panel.open = false; });
+    if (shouldOpen) {
+      target.open = true;
+      target.scrollIntoView({behavior:"smooth", block:"nearest"});
+    }
+    sync();
+  }));
+  panels.forEach(panel => panel.addEventListener("toggle", () => {
+    if (panel.open) panels.forEach(other => { if (other !== panel) other.open = false; });
+    sync();
+  }));
+  sync();
+}
+
 function initStoreContent(){
   document.title = `${STORE_CONFIG.storeName} — Premium Digital Store`;
   $("#brandName").textContent = STORE_CONFIG.storeName;
@@ -2332,7 +2470,7 @@ function initNavigation(){
     if(filterLink){setFilter(filterLink.dataset.filterTarget);}
     if(event.target.closest("a")){menu.classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");$("#menuToggle").textContent="☰";}
   });
-  const sections = ["beranda","produk","cara-order","bantuan","informasi","kontak"].map(id=>document.getElementById(id));
+  const sections = ["beranda","produk","daftar-harga","cara-order","bantuan","informasi","kontak"].map(id=>document.getElementById(id));
   if("IntersectionObserver" in window){
     const navObserver = new IntersectionObserver(entries=>entries.forEach(entry=>{
       if(entry.isIntersecting){$$('[data-nav]').forEach(link=>link.classList.toggle("active",link.dataset.nav===entry.target.id));}
@@ -2414,6 +2552,7 @@ function initPageControls(){
 }
 
 initStoreContent();
+initPriceListPanels();
 initIntroScreen();
 wireLogoFallbacks(document);
 renderFilters();
